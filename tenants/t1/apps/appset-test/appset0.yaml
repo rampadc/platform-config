@@ -14,7 +14,7 @@ spec:
   template:
     # Create an ArgoCD app for an AWS cluster build
     metadata:
-      name: 't1-todo1'
+      name: 't1-todo0'
       labels:
         gitops.tier.layer: applications
       finalizers:
