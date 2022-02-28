@@ -13,7 +13,7 @@ spec:
   project: default
   source:
     repoURL: 'https://github.com/rampadc/platform-config.git'
-    path: tenants/t1/apps/
+    path: tenants/t1/apps/appset-test
     targetRevision: HEAD
   destination:
     server: 'https://kubernetes.default.svc'
