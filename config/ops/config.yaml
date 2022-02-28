@@ -1,7 +1,7 @@
 name: platform-team
 services:
 - cert-manager
-- openshift-acm-instance
+- redhat-advanced-cluster-management
 - sealed-secrets
 - openshift-virtualization
 - ansible-automation-platform
