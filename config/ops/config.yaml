@@ -1,0 +1,7 @@
+name: platform-team
+services:
+- cert-manager
+- openshift-acm-instance
+- sealed-secrets
+- openshift-virtualization
+- ansible-automation-platform
