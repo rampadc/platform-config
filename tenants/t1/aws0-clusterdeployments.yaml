@@ -1,0 +1,42 @@
+# Ref: 
+# - Filling Helm values: https://github.com/argoproj/applicationset/issues/173#issuecomment-820959733
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: tenant1-aws-clusters
+  namespace: openshift-gitops
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/rampadc/platform-config
+      revision: main
+      files:
+      - path: "tenants/t1/aws/*.yaml"
+  template:
+    # Create an ArgoCD app for an AWS cluster build
+    metadata:
+      name: 't1-{{cluster}}'
+      annotations:
+        argocd.argoproj.io/sync-wave: "350"
+      labels:
+        gitops.tier.layer: applications
+      finalizers:
+        - resources-finalizer.argocd.argoproj.io
+    spec:
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+      destination:
+        namespace: openshift-gitops
+        server: https://kubernetes.default.svc
+      project: applications
+      source:
+        repoURL: 'https://github.com/otp-demo/otp-gitops-apps'
+        targetRevision: 'master'
+        path: clusters/cluster-build/aws/
+        helm:
+          # Something to do with ApplicationSet templating here
+          values: |
+            {{values}}
