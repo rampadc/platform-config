@@ -4,7 +4,7 @@ metadata:
   labels:
     app: todo
   name: todo
-  namespace: todo
+  namespace: todo1
   annotations:
     argocd.argoproj.io/sync-wave: "3"
 spec:

@@ -5,7 +5,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: postgresql
-  namespace: todo
+  namespace: todo0
   annotations:
     argocd.argoproj.io/sync-wave: "0"
 spec:
@@ -38,7 +38,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: postgresql
-  namespace: todo
+  namespace: todo0
   annotations:
     argocd.argoproj.io/sync-wave: "0"
 spec:
