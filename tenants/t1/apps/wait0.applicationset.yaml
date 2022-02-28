@@ -4,8 +4,6 @@ kind: ApplicationSet
 metadata:
   name: tenant1-wait0
   namespace: openshift-gitops
-  annotations:
-    argocd.argoproj.io/sync-wave: "10"
 spec:
   generators:
   - list:
@@ -20,6 +18,8 @@ spec:
         gitops.tier.layer: applications
       finalizers:
         - resources-finalizer.argocd.argoproj.io
+      annotations:
+        argocd.argoproj.io/sync-wave: "10"
     spec:
       syncPolicy:
         automated:
